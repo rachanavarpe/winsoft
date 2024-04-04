@@ -1,0 +1,61 @@
+class MaximumSumPath {
+
+   
+    public static int maxSumPath(int[] X, int[] Y) {
+        // Initialize variables to store current sum and maximum sum
+        int currentSum = 0;
+        int maxSum = 0;
+        
+        
+        int i = 0;
+        int j = 0;
+        
+       
+        while (i < X.length && j < Y.length) {
+            // If elements are equal, update maximum sum and move to next elements
+            if (X[i] == Y[j]) {
+                maxSum += Math.max(currentSum, X[i]);
+                currentSum = 0; // Reset current sum
+                i++;
+                j++;
+            } else if (X[i] < Y[j]) { // If X[i] is smaller, add it to current sum
+                currentSum += X[i];
+                i++;
+            } else { // If Y[j] is smaller, add it to current sum
+                currentSum += Y[j];
+                j++;
+            }
+        }
+        
+        
+        while (i < X.length) {
+            currentSum += X[i];
+            i++;
+        }
+        
+        
+        while (j < Y.length) {
+            currentSum += Y[j];
+            j++;
+        }
+        
+        
+        maxSum += Math.max(currentSum, 0);
+        
+       
+        return maxSum;
+    }
+
+    
+    public static void main(String[] args) {
+        // Initialize input arrays
+        int[] X = { 3, 6, 7, 8, 10, 12, 15, 18, 100 };
+        int[] Y = { 1, 2, 3, 5, 7, 9, 10, 11, 15, 16, 18, 25, 50 };
+        
+        
+        int result = maxSumPath(X, Y);
+        
+       
+        System.out.println("The maximum sum is: " + result);
+    }
+}
