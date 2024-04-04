@@ -1,0 +1,21 @@
+import java.util.HashMap;
+
+public class DuplicateCharacters {
+    
+    public static void main(String[] args) {
+        String inputString = "hello world";
+        
+        
+        HashMap<Character, Integer> charCounts = new HashMap<>();
+        
+       
+        for (char c : inputString.toCharArray()) {
+           
+            if (charCounts.containsKey(c)) {
+                System.out.println(c + " is a duplicate");
+            } else { 
+                charCounts.put(c, 1);
+            }
+        }
+    }
+}
