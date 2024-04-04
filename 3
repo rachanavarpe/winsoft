@@ -1,0 +1,30 @@
+import java.util.HashMap;
+
+public class WordCount {
+    
+    public static void main(String[] args) {
+        String inputString = "Hello world, how are you? Hello, I am fine.";
+        
+        
+        String[] words = inputString.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
+        
+       
+        HashMap<String, Integer> wordCounts = new HashMap<>();
+        
+
+        for (String word : words) {
+           
+            if (wordCounts.containsKey(word)) {
+                wordCounts.put(word, wordCounts.get(word) + 1);
+            } else { // If the word is not in the HashMap, add it with count 1
+                wordCounts.put(word, 1);
+            }
+        }
+        
+       
+        System.out.println("Word Counts:");
+        for (String word : wordCounts.keySet()) {
+            System.out.println(word + ": " + wordCounts.get(word));
+        }
+    }
+}
